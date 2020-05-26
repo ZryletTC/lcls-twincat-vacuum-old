@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="FB_GGO" Id="{10b35b2a-0339-4871-a987-1f7d7e8bc93e}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_GGO
 VAR_IN_OUT
@@ -88,7 +88,7 @@ CASE iq_astGauges[i_iIndex].eTYPE OF
 		
 	//MicroPirani Gauge	
 	PG925:
-		fb925(PG:=iq_astGauges[i_iIndex]);
+		fb925(VG:=iq_astGauges[i_iIndex]);
 	ELSE
 		(* Now, since we don't know what gauge type we're dealing with, we want 
 		to make sure to reset all the gauge parameters, otherwise we may be 
@@ -103,18 +103,5 @@ END_CASE
 (* reAssign "HV On" back into High Voltage Array*)
 iq_axHV_RO[LIMIT(0,WORD_TO_INT(stVG.wHV_RO),gc_iSizeOfGGOArray)]:=stVG.xHV_DIS;]]></ST>
     </Implementation>
-    <LineIds Name="FB_GGO">
-      <LineId Id="3" Count="18" />
-      <LineId Id="108" Count="0" />
-      <LineId Id="141" Count="0" />
-      <LineId Id="143" Count="0" />
-      <LineId Id="142" Count="0" />
-      <LineId Id="23" Count="7" />
-      <LineId Id="133" Count="3" />
-      <LineId Id="37" Count="1" />
-      <LineId Id="144" Count="0" />
-      <LineId Id="39" Count="35" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
